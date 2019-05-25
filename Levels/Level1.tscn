@@ -1,16 +1,17 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Levels/Level1.gd" type="Script" id=1]
-[ext_resource path="res://Enemies/Moon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/levels/Level1.png" type="Texture" id=2]
 [ext_resource path="res://Player/TC.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Levels/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/Moon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/Wall.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/audio/go_fuck_yourself_nooo.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/Stream Highlights _59 - THE RIDDLER 03˸36 - 03˸42 (i4L_GThX4JY).ogg" type="AudioStream" id=6]
 [ext_resource path="res://Levels/Exit.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/SmallWall.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "enter_moon"
-length = 5.0
+length = 7.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Moon:position")
 tracks/0/interp = 1
@@ -21,7 +22,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2048, 432 ), Vector2( 1080, 432 ) ]
+"values": [ Vector2( 2048, 0 ), Vector2( 1080, 500 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("AudioStreamPlayer2D")
@@ -30,7 +31,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 5 ),
+"times": PoolRealArray( 0, 6.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ 0.0 ],
@@ -44,30 +45,46 @@ tracks/1/keys = {
 [node name="Level1" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Moon" parent="." instance=ExtResource( 2 )]
-position = Vector2( 2048, 432 )
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TC" parent="." instance=ExtResource( 3 )]
-position = Vector2( 128, 792 )
+position = Vector2( 133.04, 890.225 )
+
+[node name="Moon" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2048, 720 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/enter_moon = SubResource( 1 )
 
-[node name="HUD" parent="." instance=ExtResource( 4 )]
-
 [node name="Wall" parent="." instance=ExtResource( 5 )]
 position = Vector2( -128, 504 )
-
-[node name="Wall2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 896, 1008 )
-rotation = -1.57079
 
 [node name="Wall3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2048, 504 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+pitch_scale = 0.8
 
 [node name="Exit" parent="." instance=ExtResource( 7 )]
-position = Vector2( 896, 936 )
+position = Vector2( 2210.69, 713.572 )
+scale = Vector2( 3, 3 )
+
+[node name="SmallWall" parent="." instance=ExtResource( 8 )]
+position = Vector2( 128, 1008 )
+
+[node name="SmallWall2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 640, 1008 )
+
+[node name="SmallWall3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1280, 1008 )
+
+[node name="SmallWall4" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1792, 1008 )
+[connection signal="tree_exited" from="Moon" to="." method="_on_Moon_tree_exited"]
 [connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]

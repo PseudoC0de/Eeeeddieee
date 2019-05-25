@@ -10,11 +10,12 @@ var jump_count = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	print(str(motion.x) + ", " + str(motion.y))
+#	print(str(motion.x) + ", " + str(motion.y))
 	if motion.y < 50:
 		motion.y += gravity
 	
@@ -42,5 +43,15 @@ func _physics_process(delta: float) -> void:
 			jump_count += 1
 	
 	motion.y += gravity
-	
 	motion = move_and_slide(motion, FLOOR)
+	
+	#If falls out of map
+	if position.y > 1300:
+			get_tree().quit()
+
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		var bullet = load('res://Player/Bullet.tscn')
+		var b = bullet.instance()
+		b.position = self.get_position()
+		get_parent().add_child(b)

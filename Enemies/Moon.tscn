@@ -7,3 +7,9 @@
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 flip_h = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( 55.9713, -56.7802, 56.2949, 56.1331, -14.8826, 56.1331, -25.5592, 46.4271, -34.6181, 34.7799, -42.7065, 18.2797, -48.5301, 0.485306, -52.736, -16.662, -55.3243, -30.5739, -56.2949, -44.1623, -55.9713, -57.1037 )
