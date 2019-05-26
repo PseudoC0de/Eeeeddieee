@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Levels/Entrance.gd" type="Script" id=1]
 [ext_resource path="res://assets/levels/Entrance.png" type="Texture" id=2]
@@ -6,10 +6,32 @@
 [ext_resource path="res://Player/TC.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/Exit.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/Wall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/audio/Stream Highlights _62 - Vladimir Pot-in 05˸13.2 - 05˸23 (WQ68hTih8LU)_0.ogg" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
 font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "game_begins"
+length = 10.0
+tracks/0/type = "method"
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 9.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [  ],
+"method": "stop"
+} ]
+}
 
 [node name="Entrance" type="Node2D"]
 script = ExtResource( 1 )
@@ -27,7 +49,7 @@ margin_top = 576.0
 margin_right = 1795.0
 margin_bottom = 648.0
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.329412, 0.113725, 0, 1 )
+custom_colors/font_color = Color( 0.780392, 0.156863, 0.537255, 1 )
 text = "LAIR OF THE GOD GAMER"
 align = 1
 valign = 1
@@ -52,4 +74,10 @@ rotation = 1.57079
 
 [node name="Wall3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 2048, 504 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/game_begins = SubResource( 2 )
 [connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]

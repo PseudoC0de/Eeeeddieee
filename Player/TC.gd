@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 	
 	#If falls out of map
 	if position.y > 1300:
-			get_tree().quit()
+			get_tree().change_scene("res://Levels/Entrance.tscn")
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
@@ -55,3 +55,8 @@ func _input(event):
 		var b = bullet.instance()
 		b.position = self.get_position()
 		get_parent().add_child(b)
+
+func _on_Area2D_area_entered(area: Area2D) -> void:
+	#when hitting moon
+	if(area.get_collision_layer_bit(1)):
+		get_tree().change_scene("res://Levels/Entrance.tscn")
