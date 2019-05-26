@@ -11,6 +11,7 @@ func _ready() -> void:
 		tween.set_repeat(true)
 		add_child(tween)
 		tween.start()
+		start_timer()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
@@ -19,3 +20,17 @@ func _ready() -> void:
 func stop():
 	if tween != null:
 		tween.stop_all()
+
+
+func _on_Timer_timeout() -> void:
+	var bullet = load('res://Enemies/EnemyBullet.tscn')
+	var b = bullet.instance()
+	b.position = $PathFollow2D.position
+	add_child(b)
+	start_timer()
+	
+func start_timer():
+	$PathFollow2D/Sprite/Timer.start()
+	
+func stop_timer():
+	$PathFollow2D/Sprite/Timer.stop()

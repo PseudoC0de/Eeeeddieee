@@ -150,6 +150,20 @@ tracks/8/keys = {
 "method": "back_to_entrance"
 } ]
 }
+tracks/9/type = "method"
+tracks/9/path = NodePath("Moon")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop_timer"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "death2"

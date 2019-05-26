@@ -24,6 +24,7 @@ script = ExtResource( 1 )
 scale = Vector2( 1, 0.5 )
 frames = SubResource( 1 )
 animation = "firing"
+frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
