@@ -48,6 +48,7 @@ func _physics_process(delta: float) -> void:
 	#If falls out of map
 	if position.y > 1300:
 			get_tree().change_scene("res://Levels/Entrance.tscn")
+			globals.intro_finished = false
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
@@ -60,3 +61,4 @@ func _on_Area2D_area_entered(area: Area2D) -> void:
 	#when hitting moon
 	if(area.get_collision_layer_bit(1)):
 		get_tree().change_scene("res://Levels/Entrance.tscn")
+		globals.intro_finished = false
