@@ -7,6 +7,7 @@ const gravity = 25
 const jump = -900
 const MAX_GRAVITY = 50
 var jump_count = 0
+var fell = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,9 +47,11 @@ func _physics_process(delta: float) -> void:
 	motion = move_and_slide(motion, FLOOR)
 	
 	#If falls out of map
-	if position.y > 1300:
-			get_tree().change_scene("res://Levels/Entrance.tscn")
-			globals.intro_finished = false
+	if position.y > 1300 && !fell:
+		fell = true
+		get_parent().on_death()
+#			get_tree().change_scene("res://Levels/Entrance.tscn")
+#			globals.intro_finished = false
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
@@ -60,5 +63,6 @@ func _input(event):
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	#when hitting moon
 	if(area.get_collision_layer_bit(1)):
-		get_tree().change_scene("res://Levels/Entrance.tscn")
-		globals.intro_finished = false
+		get_parent().on_death()
+#		get_tree().change_scene("res://Levels/Entrance.tscn")
+#		globals.intro_finished = false

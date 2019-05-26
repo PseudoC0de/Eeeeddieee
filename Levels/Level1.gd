@@ -2,17 +2,18 @@ extends Node2D
 
 
 var defeated_moon = false
+#var death_sounds
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AnimationPlayer.play("enter_moon")
+#	death_sounds = ["death", "death2"]
 	pass
 
 
 func _on_Exit_body_entered(body: PhysicsBody2D) -> void:
 	if body.name == "TC" && defeated_moon:
-		get_tree().change_scene("res://Levels/Entrance.tscn")
-		globals.intro_finished = false
+		on_death()
 
 
 func _on_Moon_tree_exited() -> void:
@@ -37,3 +38,13 @@ func play_correct_game_audio():
 			$MarioMaker.play()
 		elif c == "Baldi's Basics in Education and Learning":
 			$Baldi.play()
+
+func on_death():
+	randomize()
+#	var x = str(death_sounds[randi() % death_sounds.size()])
+#	print(x)
+	$AnimationPlayer.play("death")
+	globals.intro_finished = false
+	
+func back_to_entrance():
+	get_tree().change_scene("res://Levels/Entrance.tscn")
