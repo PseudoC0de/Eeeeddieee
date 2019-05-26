@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _on_Exit_body_entered(body: PhysicsBody2D) -> void:
 	if body.name == "TC" && defeated_moon:
-		on_death()
+		on_win()
 
 
 func _on_Moon_tree_exited() -> void:
@@ -48,3 +48,6 @@ func on_death():
 	
 func back_to_entrance():
 	get_tree().change_scene("res://Levels/Entrance.tscn")
+	
+func on_win():
+	get_tree().change_scene("res://Levels/BossRoom.tscn")

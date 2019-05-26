@@ -49,7 +49,10 @@ func _physics_process(delta: float) -> void:
 	#If falls out of map
 	if position.y > 1300 && !fell:
 		fell = true
-		get_parent().on_death()
+		if get_parent().name == "Level1":
+			get_parent().on_death()
+		if get_parent().name == "BossRoom":
+			get_parent().on_death()
 #			get_tree().change_scene("res://Levels/Entrance.tscn")
 #			globals.intro_finished = false
 

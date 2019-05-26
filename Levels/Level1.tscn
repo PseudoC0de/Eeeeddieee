@@ -10,33 +10,36 @@
 [ext_resource path="res://Enemies/Moon.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/Platform.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/GameOptionContainer.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/audio/go_fuck_yourself_nooo.ogg" type="AudioStream" id=11]
-[ext_resource path="res://assets/audio/Stream Highlights _62 - Vladimir Pot-in 05˸13.2 - 05˸23 (WQ68hTih8LU)_0.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/audio/spread.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/baby_rage.ogg" type="AudioStream" id=12]
 [ext_resource path="res://assets/audio/xGODSLAYERx 02˸46.5 - 02˸52 (ZNVILuy_kHU).ogg" type="AudioStream" id=13]
 [ext_resource path="res://assets/audio/Stream Highlights _75 - Bowsette suggestive gameplay 03˸25.4 - 03˸30.5 (zMZbGa1smR4).ogg" type="AudioStream" id=14]
 [ext_resource path="res://assets/audio/Stream Highlights _72 - FIRST BALDI WIN EVER _POGGERS 05˸27 - 05˸33.5 (WCf3_CqaIZw).ogg" type="AudioStream" id=15]
-[ext_resource path="res://assets/audio/c9luuul.ogg" type="AudioStream" id=16]
+[ext_resource path="res://assets/audio/scrawwwwwww.ogg" type="AudioStream" id=16]
 [ext_resource path="res://assets/audio/c9.ogg" type="AudioStream" id=17]
 
 [sub_resource type="Animation" id=3]
 resource_name = "death"
-length = 3.0
+length = 2.5
 tracks/0/type = "method"
-tracks/0/path = NodePath(".")
+tracks/0/path = NodePath("c9")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 3 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [ 0.5 ],
+"method": "play"
+}, {
 "args": [  ],
-"method": "back_to_entrance"
+"method": "stop"
 } ]
 }
 tracks/1/type = "method"
-tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/path = NodePath("Boshy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -50,24 +53,21 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("c9")
+tracks/2/path = NodePath("GettingOverIt")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ 0.0 ],
-"method": "play"
-}, {
 "args": [  ],
 "method": "stop"
 } ]
 }
 tracks/3/type = "method"
-tracks/3/path = NodePath("Boshy")
+tracks/3/path = NodePath("Overwatch")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -81,7 +81,7 @@ tracks/3/keys = {
 } ]
 }
 tracks/4/type = "method"
-tracks/4/path = NodePath("GettingOverIt")
+tracks/4/path = NodePath("MarioMaker")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -95,7 +95,7 @@ tracks/4/keys = {
 } ]
 }
 tracks/5/type = "method"
-tracks/5/path = NodePath("Overwatch")
+tracks/5/path = NodePath("Baldi")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -109,7 +109,7 @@ tracks/5/keys = {
 } ]
 }
 tracks/6/type = "method"
-tracks/6/path = NodePath("MarioMaker")
+tracks/6/path = NodePath("AudioStreamPlayer2D")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -123,7 +123,7 @@ tracks/6/keys = {
 } ]
 }
 tracks/7/type = "method"
-tracks/7/path = NodePath("Baldi")
+tracks/7/path = NodePath("Moon")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -137,17 +137,17 @@ tracks/7/keys = {
 } ]
 }
 tracks/8/type = "method"
-tracks/8/path = NodePath("Moon")
+tracks/8/path = NodePath(".")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 2.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "stop"
+"method": "back_to_entrance"
 } ]
 }
 
@@ -388,9 +388,12 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"values": [  ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.8 ],
+"method": "play"
+} ]
 }
 
 [node name="Level1" type="Node2D"]
@@ -419,7 +422,7 @@ position = Vector2( -128, 504 )
 [node name="Wall3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2048, 504 )
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 pitch_scale = 0.8
 
@@ -454,26 +457,27 @@ position = Vector2( 128, 288 )
 
 [node name="Node2D" parent="." instance=ExtResource( 10 )]
 
-[node name="Boshy" type="AudioStreamPlayer2D" parent="."]
+[node name="Boshy" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 
-[node name="GettingOverIt" type="AudioStreamPlayer2D" parent="."]
+[node name="GettingOverIt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 
-[node name="Overwatch" type="AudioStreamPlayer2D" parent="."]
+[node name="Overwatch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 
-[node name="MarioMaker" type="AudioStreamPlayer2D" parent="."]
+[node name="MarioMaker" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
 
-[node name="Baldi" type="AudioStreamPlayer2D" parent="."]
+[node name="Baldi" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
 
-[node name="win" type="AudioStreamPlayer2D" parent="."]
+[node name="win" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 16 )
+volume_db = 7.0
 pitch_scale = 0.8
 
-[node name="c9" type="AudioStreamPlayer2D" parent="."]
+[node name="c9" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
 pitch_scale = 0.8
 [connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]

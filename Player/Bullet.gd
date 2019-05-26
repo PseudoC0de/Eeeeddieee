@@ -32,7 +32,8 @@ func _on_Area2D_area_entered(area: Area2D) -> void:
 		var correct_game = globals.correct_game
 		if area.get_parent().get_parent().get_node('Moon') != null:
 			if game == correct_game:
-				area.get_parent().get_parent().get_node('Moon').queue_free()
-				area.get_parent().queue_free()
+				area.get_parent().get_parent().get_node('Moon').queue_free() #freeing moon
+				area.get_parent().queue_free() #freeing option boxes
+				area.get_parent().get_parent().get_node('AnimationPlayer').play("win")
 			else:
 				get_parent().on_death()
