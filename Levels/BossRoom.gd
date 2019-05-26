@@ -17,3 +17,7 @@ func on_death():
 	
 func back_to_entrance():
 	get_tree().change_scene("res://Levels/Entrance.tscn")
+	
+func won():
+	$Animations/AnimationPlayer.play("won")
+	
