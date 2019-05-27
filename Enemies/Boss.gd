@@ -27,8 +27,8 @@ func _process(delta: float) -> void:
 		var head_health = globals.boss_head_health
 		var middle_health = globals.boss_middle_health
 		
-		print("head: " + str(head_health))
-		print("middle: " + str(middle_health))
+#		print("head: " + str(head_health))
+#		print("middle: " + str(middle_health))
 		
 		if frame == 0:
 			head1.set_collision_layer_bit(18, true)
@@ -56,8 +56,8 @@ func _process(delta: float) -> void:
 		var head_health = globals.boss_head_health
 		var middle = $PathFollow2D/Sprite2/Middle
 		
-		print("head: " + str(head_health))
-		print("middle: " + str(middle_health))
+#		print("head: " + str(head_health))
+#		print("middle: " + str(middle_health))
 		
 		if middle_health <= 0 && !globals.won:
 			globals.won = true
@@ -71,3 +71,40 @@ func _process(delta: float) -> void:
 			
 		else:
 			middle.set_collision_layer_bit(19, false)
+
+
+func _on_Timer_timeout() -> void:
+	var frame = $PathFollow2D/Sprite.frame
+	var bullet = load('res://Enemies/EnemyBullet.tscn')
+	var b = bullet.instance()
+	b.position = $PathFollow2D.position
+	if stage == 1:
+		add_child(b)
+	elif stage == 2:
+		add_child(b)
+	start_timer_1()
+
+func start_timer_1():
+	$PathFollow2D/Sprite/Timer1.start()
+	
+func stop_timer_1():
+	$PathFollow2D/Sprite/Timer1.stop()
+	
+func start_timer_2():
+	$PathFollow2D/Sprite2/Timer2.start()
+	
+func stop_timer_2():
+	$PathFollow2D/Sprite2/Timer2.stop()
+	
+	
+
+func _on_Timer2_timeout() -> void:
+	var bullet = load('res://Enemies/EnemyBullet.tscn')
+	var b = bullet.instance()
+	b.position = $PathFollow2D.position
+	$PathFollow2D/Sprite2/Middle.add_child(b)
+	start_timer_2()
+
+func stop():
+	if tween != null:
+		tween.stop_all()

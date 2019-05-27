@@ -57,6 +57,8 @@ collision_layer = 262145
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PathFollow2D/Sprite/Head2"]
 polygon = PoolVector2Array( -33.8794, -197.499, -11.8791, -187.47, -0.231842, -172.264, 8.18005, -153.175, 10.4448, -131.499, 5.26823, -100.439, 3.97411, -83.292, -8.96725, -74.8801, -32.9088, -65.4976, -49.0854, -68.733, -65.9092, -73.2625, -80.7918, -89.4391, -91.4684, -100.116, -104.733, -126.646, -109.263, -156.734, -109.91, -181.97, -101.174, -203.647, -42.2912, -208.823 )
 
+[node name="Timer1" type="Timer" parent="PathFollow2D/Sprite"]
+
 [node name="Sprite2" type="AnimatedSprite" parent="PathFollow2D"]
 visible = false
 frames = SubResource( 2 )
@@ -68,3 +70,7 @@ collision_layer = 524289
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PathFollow2D/Sprite2/Middle"]
 polygon = PoolVector2Array( 75.1683, -19.8633, 75.1683, 55.5035, 25.89, 58.6658, 3.22726, 33.1043, -4.15131, 6.48875, -6.25948, -6.42374, 26.4171, -20.3903 )
+
+[node name="Timer2" type="Timer" parent="PathFollow2D/Sprite2"]
+[connection signal="timeout" from="PathFollow2D/Sprite/Timer1" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="PathFollow2D/Sprite2/Timer2" to="." method="_on_Timer2_timeout"]

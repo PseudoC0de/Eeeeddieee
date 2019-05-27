@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Levels/BossRoom.gd" type="Script" id=1]
 [ext_resource path="res://assets/levels/BossRoom.png" type="Texture" id=2]
@@ -43,6 +43,65 @@ tracks/1/keys = {
 "method": "back_to_entrance"
 } ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("../Boss")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop_timer_1"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../Boss")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop_timer_2"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("../Boss")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "enter_boss"
+tracks/0/type = "method"
+tracks/0/path = NodePath("../Boss")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_timer_1"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "won"
@@ -71,9 +130,12 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 9.2 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 9.2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "stop"
+}, {
 "args": [  ],
 "method": "queue_free"
 } ]
@@ -127,6 +189,7 @@ position = Vector2( 2048, 476.653 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Animations"]
 anims/boss_room_death = SubResource( 1 )
+anims/enter_boss = SubResource( 3 )
 anims/won = SubResource( 2 )
 
 [node name="c9" type="AudioStreamPlayer" parent="Animations"]
