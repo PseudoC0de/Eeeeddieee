@@ -16,7 +16,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-#	print(str(motion.x) + ", " + str(motion.y))
+	globals.TC_position = self.position
 	if motion.y < 50:
 		motion.y += gravity
 	

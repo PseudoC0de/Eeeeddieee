@@ -8,3 +8,4 @@ var boss_intro_finished = false
 var boss_head_health = 5
 var boss_middle_health = 5
 var won = false
+var TC_position
