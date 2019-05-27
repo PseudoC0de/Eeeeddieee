@@ -13,9 +13,11 @@ var phase = 0
 var won = false
 var TC_position
 var enemies_killed = 0
-var bat1_health = 30
+const  BAT_HEALTH = 30
+var bat1_health = BAT_HEALTH
 var bat2_health = 15
 
-#func _input(event):
-#	if event.is_action("ui_up"):
-#		get_tree().quit()
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		if OS.window_fullscreen:
+			OS.window_fullscreen = !OS.window_fullscreen

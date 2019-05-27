@@ -1,7 +1,7 @@
 extends Path2D
 
 var tween
-var health = 15
+var health = globals.BAT_HEALTH
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

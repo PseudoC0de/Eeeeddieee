@@ -21,13 +21,13 @@ func bat1_dead():
 	$Animations/drums.stop()
 	$Enemies/Moon.queue_free()
 	globals.enemies_killed += 1
-	globals.bat1_health = 15
+	globals.bat1_health = globals.BAT_HEALTH
 	won = true
 
 func on_death():
 	$Animations/AnimationPlayer.play("death")
 	globals.intro_finished = false
-	globals.bat1_health = 15
+	globals.bat1_health = globals.BAT_HEALTH
 	
 func back_to_entrance():
 	get_tree().change_scene("res://Levels/Entrance.tscn")
