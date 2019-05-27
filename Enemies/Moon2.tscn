@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Enemies/Moon2.gd" type="Script" id=1]
+[ext_resource path="res://assets/enemies/moon1.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemies/moon2.png" type="Texture" id=3]
+[ext_resource path="res://assets/enemies/moon3.png" type="Texture" id=4]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( -17.9295, -223.035, 17.9295, 223.035, 0, 0, 196.166, 12.9543, -196.166, -12.9543, -128, 579.737, 0, 0, 0, 0, -687.367, 235.048, -13.9822, 86.9791, 13.9822, -86.9791, -687.367, 162.581, -168.406, -25.9087, 168.406, 25.9087, -256, 72.4671, 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "flying",
+"speed": 5.0
+} ]
+
+[node name="Moon2" type="Path2D"]
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotation = -0.340339
+rotate = false
+
+[node name="Sprite" type="AnimatedSprite" parent="PathFollow2D"]
+frames = SubResource( 2 )
+animation = "flying"
+frame = 1
+speed_scale = 1.5
+playing = true
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="PathFollow2D/Sprite"]
+collision_layer = 129
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PathFollow2D/Sprite/Area2D"]
+polygon = PoolVector2Array( 56.6787, 56.2077, -14.6681, 56.2077, -29.9568, 41.8457, -40.6125, 23.7773, -48.0251, 1.5393, -55.9011, -30.4278, -55.9011, -57.2987, 55.2889, -55.9088 )
+
+[node name="Timer" type="Timer" parent="PathFollow2D/Sprite"]
+wait_time = 0.75
+[connection signal="timeout" from="PathFollow2D/Sprite/Timer" to="." method="_on_Timer_timeout"]

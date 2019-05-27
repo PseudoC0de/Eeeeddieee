@@ -50,4 +50,4 @@ func back_to_entrance():
 	get_tree().change_scene("res://Levels/Entrance.tscn")
 	
 func on_win():
-	get_tree().change_scene("res://Levels/BossRoom.tscn")
+	get_tree().change_scene("res://Levels/Level2.tscn")

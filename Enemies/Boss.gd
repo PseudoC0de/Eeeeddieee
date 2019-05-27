@@ -18,6 +18,7 @@ func start():
 	add_child(tween)
 	tween.start()
 	started = true
+	globals.phase = stage
 
 func _process(delta: float) -> void:
 	##only applies to first stage
@@ -53,6 +54,7 @@ func _process(delta: float) -> void:
 				$PathFollow2D/Sprite2.visible = true
 				middle.set_collision_layer_bit(19, true)
 				stage += 1
+				globals.phase = 2
 				get_parent().phase2()
 				
 		#Only applies to second stage

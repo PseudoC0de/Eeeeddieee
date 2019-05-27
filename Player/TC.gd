@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 	#If falls out of map
 	if position.y > 1300 && !fell:
 		fell = true
-		if get_parent().name == "Level1":
+		if get_parent().name == "Level1" || get_parent().name == "Level2":
 			get_parent().on_death()
 		if get_parent().name == "BossRoom":
 			get_parent().on_death()

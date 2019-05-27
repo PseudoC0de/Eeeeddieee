@@ -9,8 +9,13 @@ func _ready() -> void:
 	$Animations/AnimationPlayer.play("enter_boss")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
+func _process(delta: float) -> void:
+	if globals.phase == 1:
+		if globals.boss_head_health >= 0:
+			$Label.text = "Head: " + str(globals.boss_head_health)
+	elif globals.phase == 2:
+		if globals.boss_middle_health >= 0:
+			$Label.text = "Moon2Y: " + str(globals.boss_middle_health)
 
 func on_death():
 	$Boss.close_hitboxes()

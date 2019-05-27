@@ -22,7 +22,7 @@ func _on_Area2D_area_entered(area: Area2D) -> void:
 	#free fire when hits wall
 	if(area.get_collision_layer_bit(2)):
 		queue_free()
-	#when hitting moon
+	#when hitting moon (bat)
 	if(area.get_collision_layer_bit(1)):
 #		area.get_parent().get_parent().get_parent().queue_free() #frees moon
 		queue_free()
@@ -51,3 +51,10 @@ func _on_Area2D_area_entered(area: Area2D) -> void:
 		var current_boss_frame = area.get_parent().frame
 		globals.boss_head_health -= 1
 		print("head: " + str(globals.boss_head_health))
+	#When hitting the top bat in level 2
+	if area.get_collision_layer_bit(7):
+		queue_free()
+		globals.bat1_health -= 1
+		print("bat 1: " + str(globals.bat1_health))
+		if globals.bat1_health <= 0:
+			area.get_parent().get_parent().get_parent().get_parent().get_parent().bat1_dead();

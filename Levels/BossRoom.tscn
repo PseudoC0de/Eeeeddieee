@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Levels/BossRoom.gd" type="Script" id=1]
 [ext_resource path="res://assets/levels/BossRoom.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/audio/phase2_music.ogg" type="AudioStream" id=9]
 [ext_resource path="res://assets/audio/twitch_chat.ogg" type="AudioStream" id=10]
 [ext_resource path="res://Enemies/Boss.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/fonts/ComicSansMS3.ttf" type="DynamicFontData" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "boss_room_death"
@@ -239,6 +240,10 @@ tracks/3/keys = {
 } ]
 }
 
+[sub_resource type="DynamicFont" id=5]
+size = 50
+font_data = ExtResource( 12 )
+
 [node name="BossRoom" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -250,29 +255,30 @@ __meta__ = {
 }
 
 [node name="TC" parent="." instance=ExtResource( 3 )]
-position = Vector2( 128, 576 )
+position = Vector2( 128, 720 )
 
 [node name="Platforms" type="Node2D" parent="."]
 
 [node name="Platform" parent="Platforms" instance=ExtResource( 4 )]
-position = Vector2( 128, 648 )
-
-[node name="Platform2" parent="Platforms" instance=ExtResource( 4 )]
-position = Vector2( 256, 648 )
+position = Vector2( 128, 792 )
 
 [node name="Platform3" parent="Platforms" instance=ExtResource( 4 )]
-position = Vector2( 640, 428.188 )
+position = Vector2( 512, 288 )
+
+[node name="Platform7" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( 768, 648 )
 
 [node name="Platform4" parent="Platforms" instance=ExtResource( 4 )]
-position = Vector2( 640, 792 )
+position = Vector2( 512, 720 )
 
 [node name="Platform5" parent="Platforms" instance=ExtResource( 4 )]
 position = Vector2( 1792, 936 )
 
 [node name="Platform6" parent="Platforms" instance=ExtResource( 4 )]
-position = Vector2( 896, 576 )
+position = Vector2( 128, 504 )
 
 [node name="Walls" type="Node2D" parent="."]
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -318,3 +324,10 @@ pitch_scale = 0.5
 
 [node name="Boss" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1724.13, 690.99 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 896.0
+margin_right = 1084.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 5 )
+text = "Health: "
