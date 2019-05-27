@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Levels/BossRoom.gd" type="Script" id=1]
 [ext_resource path="res://assets/levels/BossRoom.png" type="Texture" id=2]
@@ -7,7 +7,8 @@
 [ext_resource path="res://Levels/Wall.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/audio/c9.ogg" type="AudioStream" id=6]
 [ext_resource path="res://assets/audio/Stream Highlights _62 - Vladimir Pot-in 05˸13.2 - 05˸23 (WQ68hTih8LU)_0.ogg" type="AudioStream" id=7]
-[ext_resource path="res://Enemies/Boss.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/audio/twitch_chat.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Enemies/Boss.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "boss_room_death"
@@ -88,6 +89,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "enter_boss"
+length = 2.5
 tracks/0/type = "method"
 tracks/0/path = NodePath("../Boss")
 tracks/0/interp = 1
@@ -100,6 +102,44 @@ tracks/0/keys = {
 "values": [ {
 "args": [  ],
 "method": "start_timer_1"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("twitch_chat")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.25, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [  ],
+"method": "stop"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "phase_2"
+length = 2.5
+tracks/0/type = "method"
+tracks/0/path = NodePath("twitch_chat2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [  ],
+"method": "stop"
 } ]
 }
 
@@ -140,6 +180,34 @@ tracks/1/keys = {
 "method": "queue_free"
 } ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("../Boss")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop_timer_1"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../Boss")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop_timer_2"
+} ]
+}
 
 [node name="BossRoom" type="Node2D"]
 script = ExtResource( 1 )
@@ -155,7 +223,6 @@ __meta__ = {
 position = Vector2( 128, 576 )
 
 [node name="Platforms" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Platform" parent="Platforms" instance=ExtResource( 4 )]
 position = Vector2( 128, 648 )
@@ -164,13 +231,16 @@ position = Vector2( 128, 648 )
 position = Vector2( 256, 648 )
 
 [node name="Platform3" parent="Platforms" instance=ExtResource( 4 )]
-position = Vector2( 640, 504 )
+position = Vector2( 640, 428.188 )
 
 [node name="Platform4" parent="Platforms" instance=ExtResource( 4 )]
-position = Vector2( 1024, 648 )
+position = Vector2( 640, 792 )
 
 [node name="Platform5" parent="Platforms" instance=ExtResource( 4 )]
 position = Vector2( 1792, 936 )
+
+[node name="Platform6" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( 896, 576 )
 
 [node name="Walls" type="Node2D" parent="."]
 __meta__ = {
@@ -190,6 +260,7 @@ position = Vector2( 2048, 476.653 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Animations"]
 anims/boss_room_death = SubResource( 1 )
 anims/enter_boss = SubResource( 3 )
+anims/phase_2 = SubResource( 4 )
 anims/won = SubResource( 2 )
 
 [node name="c9" type="AudioStreamPlayer" parent="Animations"]
@@ -199,5 +270,19 @@ pitch_scale = 0.8
 [node name="won" type="AudioStreamPlayer" parent="Animations"]
 stream = ExtResource( 7 )
 
-[node name="Boss" parent="." instance=ExtResource( 8 )]
+[node name="intro" type="AudioStreamPlayer" parent="Animations"]
+
+[node name="phase_1_music" type="AudioStreamPlayer" parent="Animations"]
+
+[node name="phase_2_music2" type="AudioStreamPlayer" parent="Animations"]
+
+[node name="twitch_chat" type="AudioStreamPlayer" parent="Animations"]
+stream = ExtResource( 8 )
+pitch_scale = 0.7
+
+[node name="twitch_chat2" type="AudioStreamPlayer" parent="Animations"]
+stream = ExtResource( 8 )
+pitch_scale = 0.5
+
+[node name="Boss" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1724.13, 690.99 )

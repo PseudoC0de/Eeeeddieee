@@ -7,7 +7,7 @@ var stage = 1
 func _ready() -> void:
 	tween = Tween.new()
 	var follow = $PathFollow2D
-	tween.interpolate_property(follow, "unit_offset", 0, 1, 6, tween.TRANS_SINE, tween.EASE_IN_OUT)
+	tween.interpolate_property(follow, "unit_offset", 0, 1, 11, tween.TRANS_SINE, tween.EASE_IN_OUT)
 	tween.set_repeat(true)
 	add_child(tween)
 	tween.start()
@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 			head2.set_collision_layer_bit(18, true)
 	#		TL1.get_child(0).set_one_way_collision(false)
 	##		print(str(TL1.get_child(0).is_one_way_collision_enabled()))
-		if head_health <= 0:
+		if head_health <= 0: #phase 2 start
 			head1.set_collision_layer_bit(18, false)
 			head2.set_collision_layer_bit(18, false)
 			$PathFollow2D/Sprite.stop()
@@ -49,6 +49,8 @@ func _process(delta: float) -> void:
 			$PathFollow2D/Sprite2.visible = true
 			middle.set_collision_layer_bit(19, true)
 			stage += 1
+			get_parent().phase2()
+			
 	#Only applies to second stage
 	if stage == 2:
 		var frame = $PathFollow2D/Sprite2.frame

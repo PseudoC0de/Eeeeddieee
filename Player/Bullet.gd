@@ -43,11 +43,11 @@ func _on_Area2D_area_entered(area: Area2D) -> void:
 		randomize()
 		globals.boss_middle_health -= 1
 		var current_boss_frame = area.get_parent().frame
-#		print("middle: " + str(globals.boss_middle_health))
+		print("middle: " + str(globals.boss_middle_health))
 	#When hitting boss head
 	if area.get_collision_layer_bit(18):
 		queue_free()
 		randomize()
 		var current_boss_frame = area.get_parent().frame
 		globals.boss_head_health -= 1
-#		print("head: " + str(globals.boss_head_health))
+		print("head: " + str(globals.boss_head_health))

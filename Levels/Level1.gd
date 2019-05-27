@@ -40,7 +40,7 @@ func play_correct_game_audio():
 			$Baldi.play()
 
 func on_death():
-	randomize()
+#	randomize()
 #	var x = str(death_sounds[randi() % death_sounds.size()])
 #	print(x)
 	$AnimationPlayer.play("death")

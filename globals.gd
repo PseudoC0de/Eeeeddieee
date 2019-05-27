@@ -9,3 +9,7 @@ var boss_head_health = 5
 var boss_middle_health = 5
 var won = false
 var TC_position
+
+#func _input(event):
+#	if event.is_action("ui_up"):
+#		get_tree().quit()
