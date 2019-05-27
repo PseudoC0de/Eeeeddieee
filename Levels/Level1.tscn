@@ -18,7 +18,7 @@
 [ext_resource path="res://assets/audio/scrawwwwwww.ogg" type="AudioStream" id=16]
 [ext_resource path="res://assets/audio/c9.ogg" type="AudioStream" id=17]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "death"
 length = 2.5
 tracks/0/type = "method"
@@ -165,7 +165,7 @@ tracks/9/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "death2"
 length = 3.0
 tracks/0/type = "method"
@@ -214,8 +214,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "enter_moon"
+[sub_resource type="Animation" id=3]
 length = 7.2
 tracks/0/type = "method"
 tracks/0/path = NodePath("AudioStreamPlayer2D")
@@ -277,8 +276,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "play_correct_game_audio"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -424,10 +422,10 @@ __meta__ = {
 position = Vector2( 133.04, 890.225 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/death = SubResource( 3 )
-anims/death2 = SubResource( 4 )
-anims/enter_moon = SubResource( 1 )
-anims/play_correct_game_audio = SubResource( 2 )
+anims/death = SubResource( 1 )
+anims/death2 = SubResource( 2 )
+anims/enter_moon = SubResource( 3 )
+anims/play_correct_game_audio = SubResource( 4 )
 anims/win = SubResource( 5 )
 
 [node name="Wall" parent="." instance=ExtResource( 4 )]
