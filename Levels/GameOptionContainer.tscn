@@ -4,11 +4,11 @@
 [ext_resource path="res://assets/hud/square_button.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/ComicSansMS3.ttf" type="DynamicFontData" id=3]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 50
 font_data = ExtResource( 3 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 128, 72 )
 
 [node name="Node2D" type="Node2D"]
@@ -35,14 +35,14 @@ margin_right = -128.0
 margin_bottom = -108.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Baldi's Basics in Education and Learning"
 align = 1
 valign = 1
 autowrap = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Node2D2" type="Area2D" parent="."]
 position = Vector2( 1792, 648 )
@@ -63,14 +63,14 @@ margin_left = -128.0
 margin_top = -108.0
 margin_right = -128.0
 margin_bottom = -108.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Getting Over It"
 align = 1
 valign = 1
 autowrap = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Node2D3" type="Area2D" parent="."]
 position = Vector2( 1792, 432 )
@@ -91,14 +91,14 @@ margin_left = -128.0
 margin_top = -108.0
 margin_right = -128.0
 margin_bottom = -108.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Getting Over It"
 align = 1
 valign = 1
 autowrap = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D3"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Node2D4" type="Area2D" parent="."]
 position = Vector2( 1792, 216 )
@@ -119,11 +119,11 @@ margin_left = -128.0
 margin_top = -108.0
 margin_right = -128.0
 margin_bottom = -108.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Getting Over It"
 align = 1
 valign = 1
 autowrap = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D4"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )

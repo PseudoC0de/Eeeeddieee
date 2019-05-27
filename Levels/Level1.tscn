@@ -473,6 +473,7 @@ stream = ExtResource( 11 )
 
 [node name="GettingOverIt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
+volume_db = 13.0
 
 [node name="Overwatch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )

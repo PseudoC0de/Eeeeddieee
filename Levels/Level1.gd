@@ -36,7 +36,7 @@ func play_correct_game_audio():
 			$Overwatch.play()
 		elif c == "Mario Maker":
 			$MarioMaker.play()
-		elif c == "Baldi's Basics in Education and Learning":
+		elif c == "Baldi":
 			$Baldi.play()
 
 func on_death():
