@@ -13,8 +13,10 @@ func _ready() -> void:
 #	pass
 
 func on_death():
+	$Boss.close_hitboxes()
 	$Animations/AnimationPlayer.play("boss_room_death")
 	globals.intro_finished = false
+
 	
 func back_to_entrance():
 	get_tree().change_scene("res://Levels/Entrance.tscn")

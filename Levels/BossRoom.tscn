@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Levels/BossRoom.gd" type="Script" id=1]
 [ext_resource path="res://assets/levels/BossRoom.png" type="Texture" id=2]
@@ -7,8 +7,10 @@
 [ext_resource path="res://Levels/Wall.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/audio/c9.ogg" type="AudioStream" id=6]
 [ext_resource path="res://assets/audio/Stream Highlights _62 - Vladimir Pot-in 05˸13.2 - 05˸23 (WQ68hTih8LU)_0.ogg" type="AudioStream" id=7]
-[ext_resource path="res://assets/audio/twitch_chat.ogg" type="AudioStream" id=8]
-[ext_resource path="res://Enemies/Boss.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/audio/phase1_music.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/phase2_music.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/audio/twitch_chat.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Enemies/Boss.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "boss_room_death"
@@ -89,7 +91,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "enter_boss"
-length = 2.5
+length = 3.0
 tracks/0/type = "method"
 tracks/0/path = NodePath("../Boss")
 tracks/0/interp = 1
@@ -119,6 +121,34 @@ tracks/1/keys = {
 }, {
 "args": [  ],
 "method": "stop"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../Boss")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("phase_1_music")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
 } ]
 }
 
@@ -273,16 +303,18 @@ stream = ExtResource( 7 )
 [node name="intro" type="AudioStreamPlayer" parent="Animations"]
 
 [node name="phase_1_music" type="AudioStreamPlayer" parent="Animations"]
+stream = ExtResource( 8 )
 
 [node name="phase_2_music2" type="AudioStreamPlayer" parent="Animations"]
+stream = ExtResource( 9 )
 
 [node name="twitch_chat" type="AudioStreamPlayer" parent="Animations"]
-stream = ExtResource( 8 )
+stream = ExtResource( 10 )
 pitch_scale = 0.7
 
 [node name="twitch_chat2" type="AudioStreamPlayer" parent="Animations"]
-stream = ExtResource( 8 )
+stream = ExtResource( 10 )
 pitch_scale = 0.5
 
-[node name="Boss" parent="." instance=ExtResource( 9 )]
+[node name="Boss" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1724.13, 690.99 )
