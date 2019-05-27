@@ -15,8 +15,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Eeeeddieee"
-run/main_scene="res://Levels/Entrance.tscn"
+config/name="Lair Of The God Gamer"
+run/main_scene="res://Levels/BossRoom.tscn"
 config/icon="res://icon.png"
 
 [autoload]

@@ -86,10 +86,10 @@ position = Vector2( 1920, 1008 )
 position = Vector2( 1664, 1008 )
 
 [node name="SmallWall4" parent="Platforms" instance=ExtResource( 5 )]
-position = Vector2( 1280, 1001.85 )
+position = Vector2( 1280, 1006.99 )
 
 [node name="SmallWall5" parent="Platforms" instance=ExtResource( 5 )]
-position = Vector2( 896, 1001.85 )
+position = Vector2( 896, 1006.99 )
 
 [node name="Wall" parent="Platforms" instance=ExtResource( 6 )]
 position = Vector2( -128, 216 )

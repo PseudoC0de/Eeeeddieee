@@ -21,6 +21,7 @@ func bat1_dead():
 	$Animations/drums.stop()
 	$Enemies/Moon.queue_free()
 	globals.enemies_killed += 1
+	globals.bat1_health = 15
 	won = true
 
 func on_death():

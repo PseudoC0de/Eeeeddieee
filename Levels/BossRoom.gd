@@ -12,12 +12,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if globals.phase == 1:
 		if globals.boss_head_health >= 0:
-			$Label.text = "Head: " + str(globals.boss_head_health)
+			$Label.text = "Moon2BRAIN: " + str(globals.boss_head_health)
 	elif globals.phase == 2:
 		if globals.boss_middle_health >= 0:
 			$Label.text = "Moon2Y: " + str(globals.boss_middle_health)
 
 func on_death():
+	globals.boss_head_health = globals.BOSS_HEAD_HEALTH
+	globals.boss_middle_health = globals.BOSS_MIDDLE_HEALTH
 	$Boss.close_hitboxes()
 	$Animations/AnimationPlayer.play("boss_room_death")
 	globals.intro_finished = false
@@ -31,3 +33,7 @@ func won():
 	
 func phase2():
 	$Animations/AnimationPlayer.play("phase_2")
+
+func _on_Exit_area_entered(area: Area2D) -> void:
+	if globals.won && area.get_parent().get_parent().name == 'TC':
+		get_tree().change_scene("res://Levels/Credits.tscn")

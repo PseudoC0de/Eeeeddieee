@@ -29,6 +29,7 @@ rotate = false
 [node name="Sprite" type="AnimatedSprite" parent="PathFollow2D"]
 frames = SubResource( 2 )
 animation = "flying"
+frame = 1
 speed_scale = 1.5
 playing = true
 flip_h = true
@@ -40,5 +41,4 @@ collision_layer = 3
 polygon = PoolVector2Array( 56.6787, 56.2077, -14.6681, 56.2077, -29.9568, 41.8457, -40.6125, 23.7773, -48.0251, 1.5393, -55.9011, -30.4278, -55.9011, -57.2987, 55.2889, -55.9088 )
 
 [node name="Timer" type="Timer" parent="PathFollow2D/Sprite"]
-wait_time = 1.2
 [connection signal="timeout" from="PathFollow2D/Sprite/Timer" to="." method="_on_Timer_timeout"]

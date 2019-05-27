@@ -74,10 +74,12 @@ func _process(delta: float) -> void:
 				middle.set_collision_layer_bit(19, false)
 				get_parent().won()
 			
-			if frame == 2:
+			if frame == 2 || frame == 3:
+				print("on")
 				middle.set_collision_layer_bit(19, true)
 				
 			else:
+				print("off")
 				middle.set_collision_layer_bit(19, false)
 
 

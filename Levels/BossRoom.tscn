@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Levels/BossRoom.gd" type="Script" id=1]
 [ext_resource path="res://assets/levels/BossRoom.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/audio/twitch_chat.ogg" type="AudioStream" id=10]
 [ext_resource path="res://Enemies/Boss.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/fonts/ComicSansMS3.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Levels/Exit.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "boss_room_death"
@@ -258,6 +259,7 @@ __meta__ = {
 position = Vector2( 128, 720 )
 
 [node name="Platforms" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Platform" parent="Platforms" instance=ExtResource( 4 )]
 position = Vector2( 128, 792 )
@@ -278,7 +280,6 @@ position = Vector2( 1792, 936 )
 position = Vector2( 128, 504 )
 
 [node name="Walls" type="Node2D" parent="."]
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -292,6 +293,7 @@ visible = false
 position = Vector2( 2048, 476.653 )
 
 [node name="Animations" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Animations"]
 anims/boss_room_death = SubResource( 1 )
@@ -331,3 +333,7 @@ margin_right = 1084.0
 margin_bottom = 71.0
 custom_fonts/font = SubResource( 5 )
 text = "Health: "
+
+[node name="Exit" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1920, 828 )
+[connection signal="area_entered" from="Exit" to="." method="_on_Exit_area_entered"]
